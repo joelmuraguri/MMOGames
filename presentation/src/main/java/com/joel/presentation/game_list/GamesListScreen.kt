@@ -5,6 +5,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
@@ -23,10 +26,13 @@ fun GamesListScreen(
 ) {
 
     val state = viewModel.gamesState.value
-    Box(modifier = Modifier.fillMaxSize()) {
-        LazyColumn(modifier = Modifier.fillMaxSize()) {
-            items(state.games) { games ->
-               GameItem(games = games)
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+    ) {
+        LazyVerticalGrid(columns = GridCells.Fixed(2)){
+            items(state.games.size){index -> 
+                GameItem(games = state.games[index])
             }
         }
         if(state.error != null) {
