@@ -39,7 +39,7 @@ android {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion '1.4.0'
+        kotlinCompilerExtensionVersion '1.4.3'
     }
     packagingOptions {
         resources {
@@ -49,6 +49,12 @@ android {
 }
 
 dependencies {
+
+    implementation(project(":data"))
+    implementation(project(":domain"))
+    implementation(project(":common"))
+    implementation(project(":presentation"))
+
 
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.0'

@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 
 }
 
@@ -25,6 +27,10 @@ android {
     buildFeatures {
         compose true
     }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.4.3"
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -38,6 +44,8 @@ dependencies {
 
     implementation(project(":data"))
     implementation(project(":domain"))
+    implementation(project(":common"))
+
 
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
@@ -54,4 +62,13 @@ dependencies {
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_ui_version"
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_ui_version"
     debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_ui_version"
+
+    //Coil
+    implementation("io.coil-kt:coil-compose:2.2.2")
+
+    //Dagger-Hilt
+    implementation "com.google.dagger:hilt-android:2.43.2"
+    kapt "com.google.dagger:hilt-android-compiler:2.43.2"
+    kapt "androidx.hilt:hilt-compiler:1.0.0"
+    implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
 }
