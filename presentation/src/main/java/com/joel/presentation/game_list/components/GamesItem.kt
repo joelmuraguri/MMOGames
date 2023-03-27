@@ -3,40 +3,34 @@ package com.joel.presentation.game_list.components
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.layout.R
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.material.Card
+import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.IconButton
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil.compose.AsyncImage
 import coil.compose.AsyncImagePainter
 import coil.compose.SubcomposeAsyncImage
 import coil.compose.SubcomposeAsyncImageContent
-import coil.request.CachePolicy
-import coil.request.ImageRequest
 import com.joel.domain.model.Games
-import kotlinx.coroutines.launch
 
 @Composable
 fun GameItem(
-    games: Games
+    games: Games,
+    onItemClick : (Games) -> Unit
 ){
 
     val itemWidth = ((LocalConfiguration.current.screenWidthDp - 30).toDouble() / 2).dp
@@ -58,7 +52,7 @@ fun GameItem(
             Card(
                 modifier = Modifier
                     .clickable {
-
+                        onItemClick(games)
                     }
                     .wrapContentSize(),
                 shape = RoundedCornerShape(10.dp),
@@ -124,39 +118,36 @@ fun GameItem(
             }
         }
     }
-
-
-
 }
 
-@Composable
-fun GameImage(
-    thumbnail : String,
-    modifier: Modifier = Modifier
-){
-    Box(
-        contentAlignment = Alignment.TopCenter,
-    ) {
-        Card(
-            elevation = 5.dp,
-            modifier = modifier
-                .fillMaxSize()
-        ) {
-            SubcomposeAsyncImage(
-                model = thumbnail,
-                contentDescription = thumbnail,
-                modifier = modifier
-                    .height(200.dp)
-                    .fillMaxWidth(),
-                contentScale = ContentScale.FillBounds
-            ) {
-                val state = painter.state
-                if (state is AsyncImagePainter.State.Loading || state is AsyncImagePainter.State.Error) {
-                    CircularProgressIndicator()
-                } else {
-                    SubcomposeAsyncImageContent()
-                }
-            } 
-        }
-    }
-}
+//@Composable
+//fun GameImage(
+//    thumbnail : String,
+//    modifier: Modifier = Modifier
+//){
+//    Box(
+//        contentAlignment = Alignment.TopCenter,
+//    ) {
+//        Card(
+//            elevation = 5.dp,
+//            modifier = modifier
+//                .fillMaxSize()
+//        ) {
+//            SubcomposeAsyncImage(
+//                model = thumbnail,
+//                contentDescription = thumbnail,
+//                modifier = modifier
+//                    .height(200.dp)
+//                    .fillMaxWidth(),
+//                contentScale = ContentScale.FillBounds
+//            ) {
+//                val state = painter.state
+//                if (state is AsyncImagePainter.State.Loading || state is AsyncImagePainter.State.Error) {
+//                    CircularProgressIndicator()
+//                } else {
+//                    SubcomposeAsyncImageContent()
+//                }
+//            }
+//        }
+//    }
+//}

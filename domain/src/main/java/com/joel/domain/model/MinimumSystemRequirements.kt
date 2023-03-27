@@ -1,4 +1,4 @@
-package com.joel.data.remote.dto
+package com.joel.domain.model
 
 data class MinimumSystemRequirements(
     val graphics: String,

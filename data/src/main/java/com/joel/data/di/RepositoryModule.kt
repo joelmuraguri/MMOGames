@@ -3,6 +3,7 @@ package com.joel.data.di
 import com.joel.data.network.GamesService
 import com.joel.data.repo.GamesRepository
 import com.joel.domain.repo.GamesRepo
+import com.joel.domain.usecase.GetGameDetailsUseCase
 import com.joel.domain.usecase.GetGamesUseCase
 import dagger.Module
 import dagger.Provides
@@ -26,6 +27,14 @@ object RepositoryModule {
     @Singleton
     fun providesGetGamesUseCase( repo: GamesRepo) : GetGamesUseCase{
         return GetGamesUseCase(repo)
+    }
+
+    @Provides
+    @Singleton
+    fun providesGetGameDetailsUseCase(
+        repo: GamesRepo
+    ) : GetGameDetailsUseCase{
+        return GetGameDetailsUseCase(repo)
     }
 
 }
