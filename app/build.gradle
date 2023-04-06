@@ -92,8 +92,8 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
     implementation 'com.squareup.retrofit2:retrofit:(insert latest version)'
     implementation("com.squareup.okhttp3:okhttp:5.0.0-alpha.2")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.9.2")
-
+    implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2")
+\
 
     //Coil
     implementation("io.coil-kt:coil-compose:2.2.2")
@@ -104,4 +104,11 @@ dependencies {
 
     //Timber
     implementation 'com.jakewharton.timber:timber:5.0.1'
+
+    //Insets
+    implementation "com.google.accompanist:accompanist-insets:0.20.0"
+
+    // Splash API
+    implementation 'androidx.core:core-splashscreen:1.0.0-beta01'
+
 }
